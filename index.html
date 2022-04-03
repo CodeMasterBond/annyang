@@ -1,15 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-
+###############
   <input onclick="annyang.start();" type='button' value='🔊 Play' />
+###############
+<script>
+  if (!annyang) {
+  console.log("Speech Recognition is not supported");
+  }
+</script>
+<script>
+  alert('Hello!');
+</script>
   
-  
-
 <script>
 if (annyang) {
   // Let's define a command.
   const commands = {
-    'hello': () => { alert('Hello world!'); },
-    'go to blog': () => { window.location.href = 'https://blog.marcusj.tech' },
+    'hello': () => { alert('Hello world! How are you doing?'); },
+    
+    'go to blog': () => { window.location.href = 'https://google.com' },
     'ask (me) my *thing': (thing) => { prompt('What is your ' + thing + '?') },
     'search (for) *query': (query) => { window.location.href = 'https://google.com/search?q=' + query },
     'calculate :quarter stats': {'regexp': /^calculate (January|April|July|October) stats$/, 'callback': console.log},
@@ -32,6 +42,6 @@ if (annyang) {
   })
 
   // Start listening.
-  annyang.start();
+  annyang.start({ autoRestart: true, continuous: false });
 }
 </script>
